@@ -20,7 +20,7 @@ class AdoptsController < ApplicationController
 
   # GET /adopts/1/edit
   def edit
-    @adopt = Adopt.find(params[:id]) # Fetch the adoption request
+    @adopt = Adopt.find(params[:id])
     @animal = @adopt.animal   
   end
 
@@ -52,7 +52,6 @@ class AdoptsController < ApplicationController
         format.json { render :show, status: :ok, location: @adopt }
 
         if @adopt.approved?
-          # If the current adoption request is approved, reject all other pending requests for the same pet
           @adopt.animal.adopts.pending.where.not(id: @adopt.id).update_all(status: 'rejected')
           @adopt.animal.update(is_adopted: true)
         end
@@ -76,12 +75,10 @@ class AdoptsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_adopt
       @adopt = Adopt.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def adopt_params
       params.require(:adopt).permit(:user_id, :animal_id, :date, :status, :message)
     end
