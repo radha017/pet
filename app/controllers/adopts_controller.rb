@@ -48,7 +48,7 @@ class AdoptsController < ApplicationController
   def update
     respond_to do |format|
       if @adopt.update(adopt_params)
-        format.html { redirect_to history_path, notice: "Adopt was successfully updated." }
+        format.html { redirect_to animal_path(@adopt.animal), notice: "Adopt was successfully updated." }
         format.json { render :show, status: :ok, location: @adopt }
 
         if @adopt.approved?

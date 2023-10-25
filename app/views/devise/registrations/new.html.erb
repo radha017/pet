@@ -18,7 +18,7 @@
  
                 <div class="mb-3">
                  
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-MAIL" %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-MAIL", required: true %>
                 </div>
 
                 <div class="mb-3">
@@ -26,12 +26,12 @@
                   <% if @minimum_password_length %>
                     
                   <% end %>
-                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "PASSWORD (6 characters minimum)" %>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "PASSWORD (6 characters minimum)", required: true %>
                 </div>
 
                 <div class="mb-3">
                   
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "CONFIRM PASSWORD" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "CONFIRM PASSWORD", required: true %>
                 </div>
 
                 <div class="mb-3">
