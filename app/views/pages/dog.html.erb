@@ -13,11 +13,7 @@
             <div class="border border-primary rounded mt-4 tryme">
               <div id="<%= dom_id animal %>">
                 <div class="img-container">
-                  <% if animal.adopts.pending.count > 0 %>
-                    <div class="notification-badge">
-                      <%= animal.adopts.pending.count %>
-                    </div>
-                  <% end %>  
+                  
                   <% if !animal.image.present? %>
                     <%= image_tag("dog.jpg", class: "image") %>
                   <% else %>
