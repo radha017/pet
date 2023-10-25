@@ -1,5 +1,5 @@
 class AdoptsController < ApplicationController
-  
+  before_action :authenticate_user!
   before_action :set_adopt, only: %i[ show edit update destroy ]
 
   # GET /adopts or /adopts.json

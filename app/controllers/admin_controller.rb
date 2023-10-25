@@ -1,6 +1,7 @@
 # app/controllers/admin_controller.rb
 
 class AdminController < ApplicationController
+  before_action :authenticate_user!
   before_action :authenticate_admin
 
 
