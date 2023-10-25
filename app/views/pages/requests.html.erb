@@ -1,0 +1,35 @@
+<div class="container p-4">
+  <div class="rounded bg-white shadow p-3">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @adoption_requests.each do |request| %>
+          <tr>
+            <td><%= request.user.email %></td>
+            <td><%= request.date %></td>
+            <td><%= request.message %></td>
+            <td><%= request.status %></td>
+            <td>
+              <%= form_for(request, url: adopt_path(request), method: :patch) do |f| %>
+                <%= f.hidden_field :status, value: 'approved' %>
+                <%= f.submit "Approve", class: "btn btn-success" %>
+              <% end %>
+              <%= form_for(request, url: adopt_path(request), method: :patch) do |f| %>
+                <%= f.hidden_field :status, value: 'rejected' %>
+                <%= f.submit "Reject", class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

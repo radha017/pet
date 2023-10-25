@@ -1,0 +1,35 @@
+<div class="container home-cont1">
+  <div class="row justify-content-center align-items-center">
+      <div class="col-10 col-sm-5 col-md-3 col-lg-2 overflow-hidden">
+      <%= link_to cat_path, class:"text-decoration-none text-dark fw-bold " do %>
+        <div class=" bg-white mt-4 d-flex flex-column align-items-center abc shadow-sm">
+          <%= image_tag "cat.png", class: "img" %>
+          <p class="text-center"> CAT </p>
+        </div>
+        <% end %>
+      </div>
+    
+
+    
+      <div class="col-10 col-sm-5 col-md-3 col-lg-2 overflow-hidden">
+      <%= link_to dog_path, class:"text-decoration-none text-dark fw-bold " do %>
+        <div class="bg-white mt-4 d-flex flex-column align-items-center abc shadow-sm">
+          <%= image_tag "dog.png", class: "img" %>
+          <p class="text-center  text-dark"> DOG </p>
+        </div>
+        <% end %>
+      </div>
+    
+
+    
+      <div class="col-10 col-sm-5 col-md-3 col-lg-2 overflow-hidden">
+      <%= link_to animals_path, class:"text-decoration-none text-dark fw-bold" do %>
+        <div class="bg-white mt-4 d-flex flex-column align-items-center abc shadow-sm">
+          <%= image_tag "cat.png", class: "img" %>
+          <p class="text-center"> ALL </p>
+        </div>
+        <% end %>
+      </div>
+    
+  </div>
+</div>

@@ -1,0 +1,141 @@
+ <div id="<%= dom_id animal %>">
+
+<div class="d-flex align-items-center">
+  <div class="pet-container">
+    <div>
+      <h2><%= animal.name %></h2>
+      <h6 class="text-dark"><%= animal.breed %> * Bulacan</h6>
+    </div>
+    <hr>
+    <div>
+      <% if animal.species == "cat" || animal.species == "Cat"%>
+        <% if animal.age <= 11 %>
+          <p> Kitten </p>
+        <% else %>
+          <p> Cat </p>
+        <% end %>   
+      <% else %>
+        <% if animal.age <= 11 %>
+          <p> Puppy </p>
+        <% else %>
+          <p> Dog </p>
+        <% end %>   
+      <% end %> 
+    </div>
+    <hr>
+    <div>
+      <h3>About</h3>
+      <h6>Characteristics</h6>
+      <p><%= animal.description %></p>
+    </div>
+  </div>
+  <div >
+  <div class="img-animal d-flex flex-column align-items-center p-2">
+    <div class="pet-img">
+      <% if !animal.image.present? %>
+        <%= image_tag("dog.jpg", class: "image") %>
+      <% else %>
+        <%= image_tag(animal.image, class: "image") %>
+      <% end %>
+    </div> 
+        <div>
+          <% if current_user && current_user.email == animal.user.email %>
+            <p>  <%= animal.name %> is adopted outside the app? </p>
+          <% else %>
+
+          <p> Interested to adopt <%= animal.name %>? </p>
+          <% end %>
+        </div>
+    <div>
+      <% if current_user %>
+        <% if current_user.id == @animal.user_id %>
+        <div class="d-flex ">
+          <%= link_to 'Edit', edit_animal_path(@animal), class: 'btn btn-primary m-1' %>
+          <%= button_to 'Delete from listing', @animal, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger m-1' %>
+        </div>
+        <% else %>
+         <% if current_user.adopts.exists?(animal_id: @animal.id) %> 
+            <% request = current_user.adopts.find_by(animal_id: @animal.id) %>
+            <% if request.status == 'approved' %>
+              <h4 class="btn btn-success"> Adopted </h4>
+            <% else %>
+              <%= button_to 'Cancel Adoption', request, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <% end %>
+
+
+          <% else %>
+            <p>
+              <%= link_to 'Adopt', new_adopt_path(animal_id: @animal.id), class: 'btn btn-info' %>
+            </p>
+          <% end  %>  
+        <% end %>
+      <% else %>
+          <div>
+            <%= link_to "Sign up",  new_user_registration_path, class: "btn btn-outline-light" %>
+          </div>
+          
+      <% end %>
+      </div>
+
+
+    </div> 
+  </div>
+</div>
+
+<% if  @adoption_requests.present?  %>
+<%if current_user && current_user.id == animal.user_id %>
+
+ <div class="container p-4">
+  <div class="rounded bg-white shadow p-3">
+    <h1 class="text-center"> Adoption Requests </h1>
+      <table class="table table-bordered .dark-table">
+        <thead class="thead-dark dark-table">
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Message</th>
+            <th>Status</th> 
+            <th>Action</th>
+             <% if @adoption_requests.any? { |request| request.status == 'approved' } %>
+            <th>Contact</th>
+          <% end %>
+          </tr>
+        </thead>
+        <% @adoption_requests.each do |request| %>
+        <tbody>
+          <tr>
+            <td><%= request.user.email %></td>
+            <td><%= request.date %></td>
+            <td><%= request.message %></td>
+            <td><%= request.status %></td>
+            <td>
+              <% if request.status != 'pending' %>
+                <p class="text-danger text-center fw-bold"> X </p>
+              <% else %>
+                <%= form_for(request, url: adopt_path(request), method: :patch) do |f| %>
+                  <%= f.hidden_field :status, value: 'approved' %>
+                  <%= f.submit "Approve", class: "btn btn-success" %>
+                <% end %>
+                <%= form_for(request, url: adopt_path(request), method: :patch) do |f| %>
+                  <%= f.hidden_field :status, value: 'rejected' %>
+                  <%= f.submit "Reject", class: "btn btn-danger" %>
+                <% end %>
+              <% end %>
+            </td>
+            <% if request.status == 'approved' %>
+              <td colspan="5">
+                <%= request.user.contact %>
+              </td>
+           
+          <% end %>
+          </tr>
+          
+        </tbody>
+        <% end %>
+      </table>
+    
+  </div>
+</div>
+
+<% end %>
+<% end %>

@@ -1,0 +1,49 @@
+
+<%= render "pages/banner" %>
+<p style="color: green"><%= notice %></p>
+<div class="container  p-5 rounded">
+<h1>Available pet for adoption</h1>
+<% if current_user %>
+  <%= link_to "Add pet for adoption", new_animal_path, class:"btn btn-dark" %>
+<% end %>
+<div class="container mt-4">
+  <div class="row">
+    <% @animals.each do |animal| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <%= link_to animal_path(animal),class: "text-decoration-none text-dark" do %>
+          <div class="container-wrapper">
+
+          <div class="rounded mt-4 tryme ">
+
+            <div id="<%= dom_id animal %>">
+            <div class="img-container">
+              <% if !animal.image.present? %>
+                  <%= image_tag("dog.jpg", class: "image") %>
+                <% else %>
+                  <%= image_tag(animal.image, class: "image") %>
+                <% end %>
+            </div>  
+              <div class="p-2 cont">
+                  <h3 class="d-flex justify-content-center">
+                    <%= animal.name %>
+                  </h3>
+                  <div class="d-flex justify-content-around">
+                    <p>
+                      <%= animal.breed %>
+                    </p>
+                    <p>
+                      <%= animal.age %> mos
+                    </p>
+                  </div>
+            </div>
+            </div>
+          </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+</div>

@@ -1,0 +1,29 @@
+<div class="container mt-5  ">
+  <div class="row justify-content-center  ">
+    <div class="col-md-8 ">
+      <div class="card msg-cont text-white shadow">
+        <div class="row g-0">
+          <div class="col-md-6">
+           <div class="py-3">
+              <h1 class="card-title text-center">Want to adopt <%= @animal.name %>?</h1>
+              <p class="card-text text-center">Send a message to the owner!</p>
+            </div> 
+            <% if @animal.image.present? %>
+              <%= image_tag @animal.image, class: "image img-fluid" %>
+            <% else %>
+              <%= image_tag "dog.jpg", class: "image img-fluid" %>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+            
+              <div class="pt-5">
+              <%= render "form", adopt: @adopt %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

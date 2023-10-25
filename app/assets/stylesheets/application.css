@@ -1,0 +1,280 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+  body{
+    background-color: rgb(236, 236, 236);
+  }
+
+ .navbar{
+    height: 7em;
+    width: 100vw;
+    padding: 1em 5em;
+    font-size: large;
+    font-weight: 500;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    
+}
+ .banner {
+    background: url(banner1.jpg);
+    background-size: cover;
+    background-position: 50% 75%;
+    width: 100vw;
+    height: 25em;
+    border-bottom: 20px solid #081f63;
+ }
+
+ .banner-nav{
+  background-color: #081f63;
+  color: white;
+  font-weight: bold;
+ } 
+ 
+ .banner-nav a.text-white:hover {
+  color: rgb(7, 197, 218) !important; 
+  text-decoration: underline !important; 
+}
+
+ .banners {
+  width: 100vw;
+  height: 30em;
+  background-color: #fff;
+  padding-top: 50px;
+}
+
+  .text-shadow{
+    position: relative;
+    text-align: center;
+    color: #fff; /* Text color (white) */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, shadow color */
+    font-weight: bold;
+    padding: 5px;
+    margin-top: -1em;
+  }
+
+ .text-shadow h1{
+  font-size: 60px;
+ }
+  
+ .image {
+  position: relative;
+  width: auto;
+  height: 250px; 
+  overflow: hidden;
+  display: block; 
+  margin: 0 auto; 
+
+ }
+
+ .row {
+   margin-bottom: 20px;
+ }
+
+ .tryme{
+   overflow: hidden; 
+   text-overflow: ellipsis; 
+   white-space: nowrap;
+   height: 300px;
+   width: 350px;
+   background-color: rgb(0, 0, 0);
+   border: 0.2em solid #143bae;
+ }
+
+ .tryme:hover {
+  border: 0.2em solid #081f63;
+ }
+
+ .tryme:hover  .cont:hover {
+  background-color: #081f63;
+}
+
+ .container-wrapper {
+  position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ }
+
+ .p-4 {
+   flex: 1; /* This will make all containers take up an equal amount of space */
+ }
+
+ .img-container{
+  height: 250px;
+  overflow: hidden;
+ }
+
+ .pet-container{
+  padding: 1em 2em;
+  margin: 2em 4em;
+  width: 60vw;
+  min-height: 500px;
+  background-color: rgb(255, 255, 255);
+  border: 0.2em solid rgb(234, 233, 233);
+  border-radius: 1em;
+ }
+
+ .pet-img{
+  width: 300px;
+  background-color: rgb(255, 255, 255);
+  border: 0.7em solid #081f63;
+  border-radius: 1em;
+  overflow: hidden;
+ }
+
+ .cont{
+  top: -40px;
+  position: relative;
+  background-color: #143bae;
+  color: white;
+  border-radius: 2em 2em 0 0;
+ }
+
+
+.notification-badge {
+  position: absolute;
+  margin: -15px;
+  background-color: red;
+  color: white; 
+  border-radius: 50%; 
+  padding: 7px 14px; 
+  font-size: 14px; 
+  font-weight: 800;
+  z-index: 1;
+  right: 0;
+}
+.notification-badge-approved {
+  position: absolute;
+  margin: -15px;
+  background-color: rgb(8, 187, 122);
+  color: white; 
+  border-radius: 10%; 
+  padding: 7px 14px; 
+  font-size: 14px; 
+  font-weight: 800;
+  z-index: 1;
+  right: 0;
+}
+
+.notification-badge-pending {
+  position: absolute;
+  margin: -15px;
+  background-color: rgb(241, 221, 4);
+  color: rgb(6, 6, 6); 
+  border-radius: 10%; 
+  padding: 7px 14px; 
+  font-size: 14px; 
+  font-weight: 800;
+  z-index: 1;
+  right: 0;
+}
+
+.notification-badge-rejected {
+  position: absolute;
+  margin: -15px;
+  background-color: rgb(8, 187, 122);
+  color: white; 
+  border-radius: 10%; 
+  padding: 7px 14px; 
+  font-size: 14px; 
+  font-weight: 800;
+  z-index: 1;
+  right: 0;
+}
+
+
+
+.form-input-narrow {
+  width: 250px; 
+}
+
+
+.dark-table {
+  background-color: #0654c8; /* Dark background color */
+  color: #fff; /* Light text color */
+}
+
+.dark-table th,
+.dark-table td {
+  border-color: #0d2cf5; /* Dark border color */
+}
+.home-text{
+  color: #081f63;
+}
+
+.home-text:hover{
+  color: #143bae;
+}
+
+.home-logo{
+  width: 100px;
+  height: auto;
+}
+
+.abc{
+  height: 200px;
+  width: 200px;
+  border-radius: 16px;
+}
+
+.abc:hover{
+  border: 0.2em solid #081f63;
+}
+
+.img{
+  width: 150px;
+}
+
+.home-cont1{
+  position: relative;
+  margin-top: -120px;
+}
+
+.text{
+  color: #081f63 !important;
+  font-weight: bold;
+}
+
+.text:hover{
+  color: #143bae;
+  text-decoration: underline;
+}
+
+.signup{
+  background-color: #081f63;
+  color: #fff;
+  border-radius: 2em;
+}
+
+.img-animal{
+  border-radius: 1em;
+  background-color: #081f63;
+  color: #fff;
+  font-weight: bold;
+}
+
+.message{
+  height: 100%; 
+  resize: none; 
+}
+
+.msg-cont{
+  background-color: #081f63;
+}
+
+.home-text2{
+  color:#081f63;
+}

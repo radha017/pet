@@ -1,0 +1,34 @@
+<div id="<%= dom_id adopt %>">
+  <p>
+    <strong>User:</strong>
+    <%= adopt.user.email %>
+  </p>
+
+  <p>
+    <strong>Animal:</strong>
+    <%= adopt.animal.user.email %>
+  </p>
+
+  <% if !adopt.animal.image.present? %>
+        <%= image_tag("dog.jpg", class: "image") %>
+      <% else %>
+        <%= image_tag(adopt.animal.image, class: "image") %>
+      <% end %>
+  </div>  
+
+  <p>
+    <strong>Status:</strong>
+    <%= adopt.status %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= adopt.date %>
+  </p>
+
+  <p>
+    <strong>Message:</strong>
+    <%= adopt.message %>
+  </p>
+
+</div>

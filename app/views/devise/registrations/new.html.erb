@@ -1,0 +1,54 @@
+<div class="container mt-5 ">
+  <div class="row justify-content-center">
+    <div class="col-md-8 "> <!-- Increased the width of the container -->
+      <div class=" mt-5 signup">
+        <div>
+          <div class="row">
+            <div class="col-md-6 bg-white pt-5">
+              <%= image_tag "https://dm6g3jbka53hp.cloudfront.net/static-images/adopt-me-pet-02032021.jpg", alt: "Adopt Me Pet", class: "img-fluid " %>
+            </div>
+            <div class="col-md-6 p-5">
+              <h2 class="card-title text-center mb-4">Sign up</h2>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-signup"}) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+
+                <div class="mb-3">
+                  <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "NAME", required: true %>
+                </div>
+ 
+                <div class="mb-3">
+                 
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-MAIL" %>
+                </div>
+
+                <div class="mb-3">
+                  
+                  <% if @minimum_password_length %>
+                    
+                  <% end %>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "PASSWORD (6 characters minimum)" %>
+                </div>
+
+                <div class="mb-3">
+                  
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "CONFIRM PASSWORD" %>
+                </div>
+
+                <div class="mb-3">
+                  
+                  <%= f.text_area :contact, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Contact Information: How Other Users Can Reach You(eg. email, cp num)", required: true %>
+                </div>
+
+                <div class="text-center">
+                  <%= f.submit "Sign up", class: "btn btn-primary btn-lg" %>
+                </div>
+              <% end %>
+
+              <p class="text-center"> Already have an account? <%= link_to "Log in", new_user_session_path, class: " text-white" %> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

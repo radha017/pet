@@ -1,0 +1,130 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container  p-5 rounded bg-white mt-2 shadow">
+<div>
+  <h1>Pet Adoption Listings</h1>  
+<% if @for_adoption.present? %>  
+  <%= link_to "Add pet for adoption", new_animal_path, class: "btn btn-secondary" %>
+</div>  
+<div class="container mt-4">
+  <div class="row">
+    <% @for_adoption.each do |animal| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      
+        <%= link_to animal_path(animal), class: "text-decoration-none text-dark" do %>
+          <div class="container-wrapper">
+          
+            <div class="border border-primary rounded mt-4 tryme">
+              <div id="<%= dom_id animal %>">
+                <div class="img-container">
+                  <% if animal.adopts.pending.count > 0 %>
+                    <div class="notification-badge">
+                      <%= animal.adopts.pending.count %>
+                    </div>
+                  <% end %>  
+                  <% if !animal.image.present? %>
+                    <%= image_tag("dog.jpg", class: "image") %>
+                  <% else %>
+                    <%= image_tag(animal.image, class: "image") %>
+                  <% end %>
+                </div>
+                <div class="p-2 cont">
+               
+                  <h3 class="d-flex justify-content-center">
+                    <%= animal.name %>
+                  </h3>
+                  <div class="d-flex justify-content-around">
+                    <p>
+                      <%= animal.breed %>
+                      <%if animal.is_adopted %>
+                        <p> Adopted </p>
+                      <% else %>
+                        <p> Available for Adoption </p>  
+                      <% end %>
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% else %>
+    <p class="text-center"> No Pet Listed for Adoption </p>
+    <p class="text-center">
+    <%= link_to "Add pet for adoption", new_animal_path, class: "btn btn-success text-center" %>
+    </p>
+  <% end %>
+</div>
+</div>
+
+<div class="container  p-5 rounded bg-white mt-4 shadow">
+  <h1>Pet Adoption Requests</h1>
+  <% if @adopts.present? %>
+  <div class="container mt-4">
+    <div class="row">
+      <% @adopts.each do |adopt| %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <%= link_to animal_path(adopt.animal), class: "text-decoration-none text-dark" do %>
+            <div class="container-wrapper">
+              <div class="border border-primary rounded mt-4 tryme ">
+                <div id="<%= dom_id adopt.animal %>">
+                  <div class="img-container">
+                    
+                    <% if adopt.status == 'approved' %>
+                      <div class="notification-badge-approved">
+                        <%= adopt.status %>
+                      </div>
+                    <% elsif adopt.status == 'pending'%>
+                      <div class="notification-badge-pending">
+                        <%= adopt.status %>
+                      </div>
+                    <% else %>
+                      <div class="notification-badge-rejected">
+                        <%= adopt.status %>
+                      </div>
+                    <% end %> 
+
+                    <% if !adopt.animal.image.present? %>
+                      <%= image_tag("dog.jpg", class: "image") %>
+                    <% else %>
+                      <%= image_tag(adopt.animal.image, class: "image") %>
+                    <% end %>
+                  </div>  
+                  <div class="p-2 cont">
+                    <h3 class="d-flex justify-content-center">
+                      <%= adopt.animal.name %>
+                    </h3>
+                    <div class="d-flex justify-content-around">
+                      <p>
+                        <%= adopt.animal.breed %>
+                      </p>
+                      <p>
+                        <%= adopt.animal.age %> mos
+                      </p>
+                      <p>
+                        <%= adopt.status %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+    <p class="text-center"> It's Quiet Here, No Pet Requests Yet </p>
+    <p class="text-center">
+    <%= link_to "Browse Pet to Adopt", animals_path, class: "btn btn-success text-center" %>
+    </p>
+  <% end %>
+</div>
+
+
+

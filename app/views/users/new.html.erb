@@ -1,0 +1,37 @@
+<div class="container my-5 bg-white shadow rounded" style="max-width: 800px;">
+  <div class="row">
+    <div class="col-md-6 p-4">
+      <h2 class="text-center">Create New User</h2>
+      
+      <%= form_for @user, url: create_user_path, html: { class: "form-signin" } do |f| %>
+        <div class="form-group mb-3">
+          <%= f.label :name, "Name", class: "mb-2" %>
+          <%= f.text_field :name, class: "form-control form-input-narrow", placeholder: "Name" %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :email, "Email", class: "mb-2" %>
+          <%= f.email_field :email, class: "form-control form-input-narrow", placeholder: "Email" %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :password, "Password", class: "mb-2" %>
+          <%= f.password_field :password, class: "form-control form-input-narrow", placeholder: "Password" %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= f.label :password_confirmation, "Confirm Password", class: "mb-2" %>
+          <%= f.password_field :password_confirmation, class: "form-control form-input-narrow", placeholder: "Confirm Password" %>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit 'Create User', class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <%= image_tag "https://dm6g3jbka53hp.cloudfront.net/static-images/adopt-me-pet-02032021.jpg", alt: "Adopt Me Pet", class: "img-fluid" %>
+    </div>
+  </div>
+</div>

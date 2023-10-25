@@ -1,0 +1,60 @@
+<div class="container my-5 bg-white rounded shadow">
+  <div class="row">
+    <div class="col-md-5">
+      <%= image_tag "https://img.freepik.com/free-vector/adopt-pet-concept_23-2148523582.jpg?w=1060&t=st=1697989685~exp=1697990285~hmac=299735a22b453b63b64293a37f4e6dafd605401ceb01ac98dd9cef529d60901b", alt: "Adopt Pet", class: "img-fluid" %>
+    </div>
+
+    <div class="col-md-7 p-4">
+      <div class="container">
+        <h1 class ="text-center">Your Pet's Next Home Awaits:<br> Create an Adoption Listing</h1>
+        <%= form_with(model: animal, class: "animal-form") do |form| %>
+          <% if animal.errors.any? %>
+            <div class="alert alert-danger">
+              <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+              <ul>
+                <% animal.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= form.label :name, "Pet's name" %>
+            <%= form.text_field :name, class: "form-control", required: true %>
+          </div>
+
+          <div class = "form-group">
+            <%= form.label :species, "Pet type (eg. cat, dog)" %>
+            <%= form.text_field :species, class: "form-control", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :breed %>
+            <%= form.text_field :breed, class: "form-control", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :age %>
+            <%= form.number_field :age, class: "form-control", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: "form-control", required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :image, "Choose image" %> <br>
+            <%= form.file_field :image, class: "form-control-file" %>
+          </div>
+
+          <br>  
+          <div class="form-group">
+            <%= form.submit "Add to listing", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

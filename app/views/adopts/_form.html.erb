@@ -1,0 +1,27 @@
+ <div class="msg-cont">
+  <%= form_with(model: adopt) do |form| %>
+    <div class="form-errors">
+      <% if adopt.errors.any? %>
+        <div class="alert alert-danger">
+          <h2><%= pluralize(adopt.errors.count, "error") %> prohibited this adoption request from being saved:</h2>
+          <ul>
+            <% adopt.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+
+    <%= form.hidden_field :animal_id, value: @animal.id %>
+
+    <div class="form-group">
+      <%= form.label :message, class: "form-label" %>
+      <%= form.text_area :message, class: "form-control message", rows: 4, placeholder: "Share with the owner your reasons for wanting to adopt this pet." %>
+    </div>
+
+    <div class="form-actions pt-2">
+      <%= form.submit "Send Message", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>

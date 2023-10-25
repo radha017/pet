@@ -1,0 +1,45 @@
+<%= render "pages/banner" %>
+<!-- Updated code in your view -->
+<div class="container mt-4">
+<h1>Cats & Kittens</h1>
+  <div class="row">
+    <% @cat.each do |animal| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      
+        <%= link_to animal_path(animal), class: "text-decoration-none text-dark" do %>
+          <div class="container-wrapper">
+          
+            <div class="border border-primary rounded mt-4 tryme">
+              <div id="<%= dom_id animal %>">
+                <div class="img-container">
+                  <% if !animal.image.present? %>
+                    <%= image_tag("dog.jpg", class: "image") %>
+                  <% else %>
+                    <%= image_tag(animal.image, class: "image") %>
+                  <% end %>
+                </div>
+                <div class="p-2 cont">
+               
+                  <h3 class="d-flex justify-content-center">
+                    <%= animal.name %>
+                  </h3>
+                  <div class="d-flex justify-content-around">
+                    <p>
+                      <%= animal.breed %>
+                      <%if animal.is_adopted %>
+                        <p> Adopted </p>
+                      <% else %>
+                        <p> Available for Adoption </p>  
+                      <% end %>
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
