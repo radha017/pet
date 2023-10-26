@@ -13,7 +13,7 @@ admin = User.create(
   role: 'admin', 
   contact: '09909909091'
 )
-puts "Admin creation status: #{admin.persisted?}"
+
 user1 = User.create(
   name: 'The Philippine Animal Welfare Society • PAWS', 
   email: 'paws@hugs.com', 
@@ -22,7 +22,7 @@ user1 = User.create(
   role: 'user', 
   contact: '09909909091'
 )
-puts "User creation status: #{user1.persisted?}"
+
 pet1 = Animal.create(
     name: 'Rex',
     species: 'Dog',
@@ -32,7 +32,7 @@ pet1 = Animal.create(
     is_adopted: false,
     user_id: 1
 )
-puts "Pet creation status: #{pet1.persisted?}"
+
 
 pet_data = [
   {

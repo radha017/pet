@@ -3,7 +3,7 @@ class AnimalsController < ApplicationController
 
   # GET /animals or /animals.json
   def index
-    @animals = Animal.where.not(user: current_user).where(is_adopted: false)
+    @animals = Animal.where.not(user: current_user).where(is_adopted: false).order(created_at: :desc)
   end
 
   # GET /animals/1 or /animals/1.json

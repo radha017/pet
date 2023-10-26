@@ -1,3 +1,5 @@
+require 'open-uri'
+
 admin = User.create(
   name: 'Admin User', 
   email: 'admin@hugs.com', 
@@ -22,8 +24,17 @@ pet1 = Animal.create(
     description: "Rex is a playful and energetic Australian Shepherd. He's a quick learner and enjoys agility training. He's looking for an active family that can keep up with his enthusiasm.",
     is_adopted: false,
     user_id: 1,
-   )
-    pet1.image.attach(io: URI.open('https://www.animalhouseshelter.com/wp-content/uploads/2020/06/Oslo-F-GSD-Amstaff-mix-9-weeks-old.jpg'), filename: 'image.jpg')
+)
+
+# Attach the image
+file = URI.open('https://www.animalhouseshelter.com/wp-content/uploads/2020/06/Oslo-F-GSD-Amstaff-mix-9-weeks-old.jpg')
+pet1.image.attach(io: file, filename: 'image.jpg')
+
+# Save the record
+pet1.save
+
+
+
 
 pet_data = [
   {
