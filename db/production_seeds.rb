@@ -6,7 +6,6 @@ admin = User.create(
   role: 'admin', 
   contact: '09909909091'
 )
-puts "Admin creation status: #{admin.persisted?}"
 user1 = User.create(
   name: 'The Philippine Animal Welfare Society • PAWS', 
   email: 'paws@hugs.com', 
@@ -15,7 +14,6 @@ user1 = User.create(
   role: 'user', 
   contact: '09909909091'
 )
-puts "User creation status: #{user1.persisted?}"
 pet1 = Animal.create(
     name: 'Rex',
     species: 'Dog',
@@ -23,9 +21,9 @@ pet1 = Animal.create(
     age: 3,
     description: "Rex is a playful and energetic Australian Shepherd. He's a quick learner and enjoys agility training. He's looking for an active family that can keep up with his enthusiasm.",
     is_adopted: false,
-    user_id: 1
-)
-puts "Pet creation status: #{pet1.persisted?}"
+    user_id: 1,
+   )
+    pet1.image.attach(io: URI.open('https://www.animalhouseshelter.com/wp-content/uploads/2020/06/Oslo-F-GSD-Amstaff-mix-9-weeks-old.jpg'), filename: 'image.jpg')
 
 pet_data = [
   {
