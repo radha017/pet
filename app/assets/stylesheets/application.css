@@ -278,3 +278,26 @@
 .home-text2{
   color:#081f63;
 }
+
+
+.contact-cont{
+  background-color: #081f63;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  border-radius: 1em ;
+}
+
+#text-area-container {
+  position: relative;
+}
+
+#message {
+  padding-right: 70px; /* Adjust this value to move the button closer or farther from the right edge */
+}
+
+.btns {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

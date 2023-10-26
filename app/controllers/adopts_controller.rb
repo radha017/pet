@@ -5,7 +5,7 @@ class AdoptsController < ApplicationController
   # GET /adopts or /adopts.json
   def index
     @animal = Animal.find(params[:id])
-    @adoption_requests = @animal.adopts
+    @adoption_requests = @animal.adopts.order(created_at: :desc)
   end
 
   # GET /adopts/1 or /adopts/1.json

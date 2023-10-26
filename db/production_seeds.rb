@@ -35,6 +35,7 @@ pet_data = [
     age: 3,
     description: "Whiskers is a charming and curious feline who loves to explore. With her striking green eyes and silky black coat, she's a beauty to behold. Whiskers is looking for a loving home where she can cuddle up with you on the couch.",
     is_adopted: false,
+    image: 'https://www.animalhouseshelter.com/wp-content/uploads/2020/06/Oslo-F-GSD-Amstaff-mix-9-weeks-old.jpg'
     user_id: user1.id
   },
   {
@@ -152,6 +153,7 @@ pet_data = [
     age: 5,
     description: "Daisy is a fluffy and gentle Bichon Frise with a fondness for cuddles. She's a little lap dog who enjoys being pampered and will bring a smile to your face every day.",
     is_adopted: false,
+    image: 'https://paws.org.ph/wp-content/uploads/2023/08/DSC_0618-scaled-e1693643745322.jpg'
     user_id: user1.id
   },
   {

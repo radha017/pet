@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post '/user/create' => 'users#create', as: 'create_user' 
   get '/cat' => 'pages#cat', as: 'cat'
   get '/dog' => 'pages#dog', as: 'dog'
+  get '/contactus' => 'pages#contact', as: 'contact'
   
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
