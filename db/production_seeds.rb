@@ -23,7 +23,8 @@ pet1 = Animal.create(
     is_adopted: false,
     user_id: 1,
    )
-   pet1.image.attach(io: File.open('app/assets/iamges/dog.jpg'), filename: 'dog.jpg')
+    pet1.image.attach(io: URI.open('https://www.animalhouseshelter.com/wp-content/uploads/2020/06/Oslo-F-GSD-Amstaff-mix-9-weeks-old.jpg'), filename: 'image.jpg')
+
 pet_data = [
   {
     name: 'Whiskers',
