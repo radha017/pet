@@ -28,7 +28,7 @@ class AnimalsController < ApplicationController
 
     respond_to do |format|
       if @animal.save
-        format.html { redirect_to animal_url(@animal), notice: "Animal was successfully created." }
+        format.html { redirect_to animal_url(@animal), notice: "Pet was successfully added to listing." }
         format.json { render :show, status: :created, location: @animal }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class AnimalsController < ApplicationController
   def update
     respond_to do |format|
       if @animal.update(animal_params)
-        format.html { redirect_to animal_url(@animal), notice: "Animal was successfully updated." }
+        format.html { redirect_to animal_url(@animal), notice: "Pet was successfully updated." }
         format.json { render :show, status: :ok, location: @animal }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class AnimalsController < ApplicationController
       @adopt.destroy
   
       respond_to do |format|
-        format.html { redirect_to animals_url, notice: "Adoption request was successfully canceled." }
+        format.html { redirect_to animals_url, notice: "Adoption request was successfully cancelled." }
         format.json { head :no_content }
       end
     elsif @animal.user == current_user
@@ -78,12 +78,12 @@ class AnimalsController < ApplicationController
       @animal.destroy
   
       respond_to do |format|
-        format.html { redirect_to animals_url, notice: "Animal and associated adoption requests were successfully deleted." }
+        format.html { redirect_to animals_url, notice: "Pet were successfully deleted." }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to animals_url, alert: "You can only cancel your own adoption requests or delete your own posted animals." }
+        format.html { redirect_to animals_url, alert: "You can only cancel your own adoption requests or delete your own pet listing." }
         format.json { head :unprocessable_entity }
       end
     end
