@@ -10,9 +10,6 @@ class AdminController < ApplicationController
   end
   
 
-
-  
-
   private
 
   def authenticate_admin

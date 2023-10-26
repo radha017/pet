@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
-  
+  before_action :authenticate_user!, except: [:home, :cat, :dog]
   def home
     @animals = Animal.where.not(user: current_user).where(is_adopted: false)
   end
 
   def history
-    @for_adoption =  current_user.animals.order(created_at: :desc)
+    @for_adoption =  current_user.animals
     @adopts =  current_user.adopts.order(created_at: :desc)
     
   end
@@ -23,13 +23,5 @@ class PagesController < ApplicationController
     @dog = Animal.where("LOWER(species) = ?","dog").order(created_at: :desc)
   end
 
-  private
-
-  def admin_user
-    unless current_user.admin?
-      flash[:alert] = 'Access denied. You do not have permission to access the admin dashboard.'
-        redirect_to root_path
-        end
-  end
 
 end

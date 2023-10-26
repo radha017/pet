@@ -55,14 +55,25 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
     @adopt = current_user.adopts.find_by(animal_id: @animal.id)
   
-    if @adopt
+    if current_user.admin?
+      # An admin can delete any animal
+      @animal.adopts.destroy_all
+      @animal.destroy
+  
+      respond_to do |format|
+        format.html { redirect_to dashboard_path, notice: "Pet is successfully deleted from the listing" }
+        format.json { head :no_content }
+      end
+    elsif @adopt
+      # A regular user can cancel their own adoption request
       @adopt.destroy
+  
       respond_to do |format|
         format.html { redirect_to animals_url, notice: "Adoption request was successfully canceled." }
         format.json { head :no_content }
       end
     elsif @animal.user == current_user
-      # Destroy associated adoption requests (adopts) first
+      # A regular user can delete their own animals
       @animal.adopts.destroy_all
       @animal.destroy
   
@@ -77,6 +88,7 @@ class AnimalsController < ApplicationController
       end
     end
   end
+  
   
   
 

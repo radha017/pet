@@ -1,7 +1,7 @@
 
 <%= render "pages/banner" %>
 <p style="color: green"><%= notice %></p>
-<div class="container  p-5 rounded">
+<div class="container  p-5 rounded bg-white">
 <h1>Available pet for adoption</h1>
 <% if current_user %>
   <%= link_to "Add pet for adoption", new_animal_path, class:"btn btn-dark" %>
